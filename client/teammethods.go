@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 
 	//helperfmt "wmclient/internal/helpers"
-	"wmclient/internal/consts"
-	"wmclient/internal/contracts/responses"
-	"wmclient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/consts"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
+	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
 func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName string) (responses.CreateTeamResponse, error) {

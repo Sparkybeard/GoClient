@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"wmclient/internal/contracts/responses"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
 
 

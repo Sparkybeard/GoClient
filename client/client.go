@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	oauthclient "wmclient/internal/authentication"
-	data "wmclient/internal/contracts/payloads"
-	"wmclient/internal/interfaces"
+	oauthclient "github.com/Sparkybeard/GoClient/internal/authentication"
+	data "github.com/Sparkybeard/GoClient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/interfaces"
 )
 
 type Options struct {

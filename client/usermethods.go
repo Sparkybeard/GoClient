@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 
 	//helperfmt "wmclient/internal/helpers"
-	"wmclient/internal/consts"
-	"wmclient/internal/contracts/responses"
-	"wmclient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/consts"
+	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
 
 func (c *Client) CreateUser(ctx context.Context, userName string) (responses.CreateUserResponse, error) {
@@ -69,7 +69,7 @@ func (c *Client) GetUser(ctx context.Context, userName string) (responses.GetUse
 
 	// validate response
 	// if incorrect return empty string to instanciate
-	if (result.Data.UserName == userName && result.Data.Id != "") {
+	if result.Data.UserName == userName && result.Data.Id != "" {
 		return result, nil
 	}
 
@@ -106,7 +106,7 @@ func (c *Client) DeleteUser(ctx context.Context, userName string) (bool, error) 
 }
 
 func (c *Client) UpdateUser() (responses.UpdateUserResponse, error) {
- 	var result responses.UpdateUserResponse
+	var result responses.UpdateUserResponse
 
- 	return result, nil
+	return result, nil
 }

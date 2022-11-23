@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	helperfmt "wmclient/internal/helpers"
-	"wmclient/internal/consts"
-	"wmclient/internal/contracts/responses"
-	"wmclient/internal/contracts/payloads"
+	helperfmt "github.com/Sparkybeard/GoClient/internal/helpers"
+	"github.com/Sparkybeard/GoClient/internal/consts"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
+	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
 func (c *Client) InstanciateDb(ctx context.Context, applicationName string, solutionName string, environmentName string, dbSku string) (responses.InstanciateDbResponse, error) {

@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 
 	//helperfmt "wmclient/internal/helpers"
-	"wmclient/internal/consts"
-	"wmclient/internal/contracts/responses"
-	"wmclient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/consts"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
+	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
 func (c *Client) CreateSolution(ctx context.Context, solutionId string, solutionName string) (responses.CreateSolutionResponse, error) {
