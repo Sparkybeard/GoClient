@@ -1,8 +1,10 @@
 package payloads
 
+import "time"
+
 type CreateApplicationPayload struct {
 	ApplicationName string `json:"name"`
-	EndOfLife	string `json:"endOfLife"`
+	EndOfLife	time.Time `json:"endOfLife"`
 	Workload string `json:"workload"`
 	PartOf string `json:"partOf"`
 	Monitor	string `json:"monitor"`
@@ -18,7 +20,7 @@ type GetApplicationPayload struct {
 
 type UpdateApplicationPayload struct {
 	ApplicationName string `json:"name"`
-	EndOfLife	string `json:"endOfLife"`
+	EndOfLife	time.Time `json:"endOfLife"`
 	Workload string `json:"workload"`
 	PartOf string `json:"partOf"`
 	Monitor	string `json:"monitor"`

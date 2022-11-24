@@ -1,10 +1,12 @@
 package responses
 
+import "time"
+
 type CreateApplicationResponse struct {
 	Data struct {
 		ApplicationId	string `json:"applicationId"`
 		ApplicationName string `json:"applicationName"`
-		EndOfLife string `json:"endOfLife"`
+		EndOfLife time.Time `json:"endOfLife"`
 		Monitor string `json:"monitor"`
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
@@ -18,10 +20,11 @@ type GetApplicationResponse struct {
 	Data struct {
 		ApplicationId	string `json:"applicationId"`
 		ApplicationName string `json:"applicationName"`
-		EndOfLife string `json:"endOfLife"`
+		EndOfLife time.Time `json:"endOfLife"`
 		Monitor string `json:"monitor"`
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
+		Workload string `json:"workload"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
 		SolutionArdId int64 `json:"solutionArdId"`
@@ -32,10 +35,11 @@ type UpdateApplicationResponse struct {
 	Data struct {
 		ApplicationId	string `json:"applicationId"`
 		ApplicationName string `json:"applicationName"`
-		EndOfLife string `json:"endOfLife"`
+		EndOfLife time.Time `json:"endOfLife"`
 		Monitor string `json:"monitor"`
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
+		Workload string `json:"workload"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
 		SolutionArdId int64 `json:"solutionArdId"`

@@ -2,6 +2,7 @@ package interfaces
 
 import (
 	"context"
+	"time"
 
 	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
@@ -22,7 +23,7 @@ type WMclient interface {
 
 	GetApplication(ctx context.Context, applicationId string, applicationName string, 
 		solutionArdId int64, solutionId string) (responses.GetApplicationResponse, error)
-	CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife string, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error)
+	CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife time.Time, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error)
 	DeleteApplication(ctx context.Context, applicationName string, ardId int64) (bool, error)
 	UpdateApplication() (responses.UpdateApplicationResponse, error)
 

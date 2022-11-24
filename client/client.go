@@ -34,7 +34,7 @@ type metadata struct {
 }
 
 type operations interface {
-	data.InstanciateDbPayload | data.GetDbPayload | data.DeleteDbPayload | 
+	data.InstanciateDbPayload | data.GetDbPayload | data.DeleteDbPayload |
 		data.CreateApplicationPayload | data.GetApplicationPayload | data.DeleteApplicationPayload | data.UpdateApplicationPayload |
 		data.CreateSolutionPayload | data.GetSolutionPayload | data.DeleteSolutionPayload | data.UpdateSolutionPayload |
 		data.CreateTeamPayload | data.GetTeamPayload | data.DeleteTeamPayload | data.UpdateTeamPayload |
@@ -47,7 +47,7 @@ type payload[T operations] struct {
 }
 
 func NewClient(ops Options) (interfaces.WMclient, error) {
-	
+
 	tr := &http.Transport{
 		MaxIdleConns:       10,
 		IdleConnTimeout:    30 * time.Second,

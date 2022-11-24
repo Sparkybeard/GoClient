@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"time"
 
 	//helperfmt "wmclient/internal/helpers"
 	"github.com/Sparkybeard/GoClient/internal/consts"
@@ -12,7 +13,7 @@ import (
 	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
 
-func (c *Client) CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife string, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error) {
+func (c *Client) CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife time.Time, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error) {
 	// TODO explore get solutions with ardId instead of other solution parameters
 	var result responses.CreateApplicationResponse
 
@@ -20,7 +21,7 @@ func (c *Client) CreateApplication(ctx context.Context, applicationName string, 
 	reqPayload := payload[payloads.CreateApplicationPayload]{metadata{}, payloads.CreateApplicationPayload{}}
 	reqPayload.OperationPayload.ApplicationName = applicationName
 	reqPayload.OperationPayload.SolutionArdId = ardId
-	reqPayload.OperationPayload.EndOfLife = endOfLife
+	reqPayload.OperationPayload.EndOfLife = endOfLife.UTC()
 	reqPayload.OperationPayload.Monitor = monitor
 	reqPayload.OperationPayload.PartOf = partOf
 	reqPayload.OperationPayload.Workload = workload
