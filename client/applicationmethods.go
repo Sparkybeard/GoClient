@@ -58,7 +58,7 @@ func (c *Client) GetApplication(ctx context.Context, applicationName string, sol
 	reqPayload.OperationPayload.SolutionName = solutionName
 
 	// execute request
-	resp, err := doAPIRequest(reqPayload, c, consts.GetDbActionPath)
+	resp, err := doAPIRequest(reqPayload, c, consts.GetApplicationActionPath)
 	if err != nil {
 		return result, fmt.Errorf("failed to retrieve application data. \n%w", err)
 	}
@@ -92,7 +92,7 @@ func (c *Client) DeleteApplication(ctx context.Context, applicationName string, 
 	reqPayload.OperationPayload.SolutionId = solutionName
 
 	// execute request
-	resp, err := doAPIRequest(reqPayload, c, consts.DeleteDbActionPath)
+	resp, err := doAPIRequest(reqPayload, c, consts.DeleteApplicationActionPath)
 	if err != nil {
 		return false, fmt.Errorf("failed to delete application. \n%w", err)
 	}

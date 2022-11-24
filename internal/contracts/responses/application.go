@@ -9,6 +9,7 @@ type CreateApplicationResponse struct {
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
+		SolutionName string `json:"solutionName"`
 	} `json:"data"`
 }
 
@@ -21,6 +22,7 @@ type GetApplicationResponse struct {
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
+		SolutionName string `json:"solutionName"`
 	} `json:"data"`
 }
 
@@ -33,6 +35,7 @@ type UpdateApplicationResponse struct {
 		Interval string `json:"interval"`
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
+		SolutionName string `json:"solutionName"`
 	} `json:"data"`
 }
 
