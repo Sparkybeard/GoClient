@@ -10,8 +10,10 @@ type CreateApplicationPayload struct {
 }
 
 type GetApplicationPayload struct {
+	ApplicationId 	string `json:"id"`
 	ApplicationName string `json:"name"`
 	SolutionArdId int64 `json:"solutionArdId"`
+	SolutionId	string `json:"solutionId"`
 }
 
 type UpdateApplicationPayload struct {

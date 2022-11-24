@@ -8,8 +8,8 @@ import (
 
 	//helperfmt "wmclient/internal/helpers"
 	"github.com/Sparkybeard/GoClient/internal/consts"
-	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
 
 func (c *Client) CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife string, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error) {
@@ -21,7 +21,7 @@ func (c *Client) CreateApplication(ctx context.Context, applicationName string, 
 	reqPayload.OperationPayload.ApplicationName = applicationName
 	reqPayload.OperationPayload.SolutionArdId = ardId
 	reqPayload.OperationPayload.EndOfLife = endOfLife
-	reqPayload.OperationPayload.Monitor = monitor 
+	reqPayload.OperationPayload.Monitor = monitor
 	reqPayload.OperationPayload.PartOf = partOf
 	reqPayload.OperationPayload.Workload = workload
 
@@ -49,13 +49,16 @@ func (c *Client) CreateApplication(ctx context.Context, applicationName string, 
 	return result, fmt.Errorf("failed to create application: %s", err.Error())
 }
 
-func (c *Client) GetApplication(ctx context.Context, applicationName string, ardId int64) (responses.GetApplicationResponse, error) {
+func (c *Client) GetApplication(ctx context.Context, applicationId string, applicationName string, 
+	solutionArdId int64, solutionId string) (responses.GetApplicationResponse, error) {
 	var result responses.GetApplicationResponse
 
 	// create payload
 	reqPayload := payload[payloads.GetApplicationPayload]{metadata{}, payloads.GetApplicationPayload{}}
 	reqPayload.OperationPayload.ApplicationName = applicationName
-	reqPayload.OperationPayload.SolutionArdId = ardId
+	reqPayload.OperationPayload.SolutionArdId = solutionArdId
+	reqPayload.OperationPayload.SolutionId = solutionId
+	reqPayload.OperationPayload.ApplicationId = applicationId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetApplicationActionPath)
@@ -114,5 +117,5 @@ func (c *Client) DeleteApplication(ctx context.Context, applicationName string, 
 
 func (c *Client) UpdateApplication() (responses.UpdateApplicationResponse, error) {
 	var result responses.UpdateApplicationResponse
-	return result, nil	
+	return result, nil
 }
