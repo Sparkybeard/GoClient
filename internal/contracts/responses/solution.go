@@ -13,6 +13,7 @@ type GetSolutionResponse struct {
 		Id string `json:"id"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId int32 `json:"ardId"`
 	} `json:"data"`
 }
 

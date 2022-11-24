@@ -53,7 +53,7 @@ func (c *Client) GetSolution(ctx context.Context, solutionName string) (response
 	reqPayload.OperationPayload.SolutionName = solutionName
 
 	// execute request
-	resp, err := doAPIRequest(reqPayload, c, consts.GetDbActionPath)
+	resp, err := doAPIRequest(reqPayload, c, consts.GetSolutionActionPath)
 	if err != nil {
 		return result, fmt.Errorf("failed to retrieve solution data. \n%w", err)
 	}
