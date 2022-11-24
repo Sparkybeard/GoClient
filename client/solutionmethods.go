@@ -12,13 +12,14 @@ import (
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
-func (c *Client) CreateSolution(ctx context.Context, solutionId string, solutionName string) (responses.CreateSolutionResponse, error) {
+func (c *Client) CreateSolution(ctx context.Context, solutionId string, solutionName string, ardId int32) (responses.CreateSolutionResponse, error) {
 	var result responses.CreateSolutionResponse
 
 	// create payload
 	reqPayload := payload[payloads.CreateSolutionPayload]{metadata{}, payloads.CreateSolutionPayload{}}
 	reqPayload.OperationPayload.SolutionName = solutionName
 	reqPayload.OperationPayload.SolutionId = solutionId
+	reqPayload.OperationPayload.SolutionArdId = ardId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.CreateApplicationActionPath)

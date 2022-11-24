@@ -2,9 +2,9 @@ package interfaces
 
 import (
 	"context"
+
 	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
-
 
 type WMclient interface {
 	GetDb(ctx context.Context, applicationName string, solutionName string, environmentName string, serverName string) (responses.GetDbResponse, error)
@@ -13,7 +13,7 @@ type WMclient interface {
 	UpdateDb() (responses.UpdateDbResponse, error)
 
 	GetSolution(ctx context.Context, solutionName string) (responses.GetSolutionResponse, error)
-	CreateSolution(ctx context.Context, solutionId string, solutionName string) (responses.CreateSolutionResponse, error)
+	CreateSolution(ctx context.Context, solutionId string, solutionName string, ardId int32) (responses.CreateSolutionResponse, error)
 	DeleteSolution(ctx context.Context, solutionName string) (bool, error)
 	UpdateSolution() (responses.UpdateSolutionResponse, error)
 
