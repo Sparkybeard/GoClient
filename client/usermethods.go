@@ -40,7 +40,7 @@ func (c *Client) CreateUser(ctx context.Context, userName string) (responses.Cre
 		return result, nil
 	}
 
-	return result, fmt.Errorf("data received from api doesn't match data from request %+v: %w", err)
+	return result, fmt.Errorf("data received from api doesn't match data from request: %s", err.Error())
 	// TODO: add errors to add details to validation failure
 }
 

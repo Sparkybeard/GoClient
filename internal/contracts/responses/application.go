@@ -10,6 +10,7 @@ type CreateApplicationResponse struct {
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId int64 `json:"solutionArdId"`
 	} `json:"data"`
 }
 
@@ -23,6 +24,7 @@ type GetApplicationResponse struct {
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId int64 `json:"solutionArdId"`
 	} `json:"data"`
 }
 
@@ -36,6 +38,7 @@ type UpdateApplicationResponse struct {
 		PartOf string `json:"partOf"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId int64 `json:"solutionArdId"`
 	} `json:"data"`
 }
 

@@ -12,7 +12,7 @@ import (
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
-func (c *Client) CreateSolution(ctx context.Context, solutionId string, solutionName string, ardId int32) (responses.CreateSolutionResponse, error) {
+func (c *Client) CreateSolution(ctx context.Context, solutionId string, solutionName string, ardId int64) (responses.CreateSolutionResponse, error) {
 	var result responses.CreateSolutionResponse
 
 	// create payload
@@ -42,15 +42,15 @@ func (c *Client) CreateSolution(ctx context.Context, solutionId string, solution
 		return result, nil
 	}
 
-	return result, fmt.Errorf("failed to create solution %+v: %w", err)
+	return result, fmt.Errorf("failed to create solution: %s", err.Error())
 }
 
-func (c *Client) GetSolution(ctx context.Context, solutionName string) (responses.GetSolutionResponse, error) {
+func (c *Client) GetSolution(ctx context.Context, ardId int64) (responses.GetSolutionResponse, error) {
 	var result responses.GetSolutionResponse
 
 	// create payload
 	reqPayload := payload[payloads.GetSolutionPayload]{metadata{}, payloads.GetSolutionPayload{}}
-	reqPayload.OperationPayload.SolutionName = solutionName
+	reqPayload.OperationPayload.SolutionArdId = ardId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetSolutionActionPath)
@@ -70,7 +70,7 @@ func (c *Client) GetSolution(ctx context.Context, solutionName string) (response
 
 	// validate response
 	// if incorrect return empty string to instanciate
-	if result.Data.SolutionName == solutionName {
+	if result.Data.SolutionArdId == int32(ardId) {
 		return result, nil
 	}
 

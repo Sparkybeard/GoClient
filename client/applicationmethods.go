@@ -12,14 +12,14 @@ import (
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 )
 
-func (c *Client) CreateApplication(ctx context.Context, applicationName string, solutionId string, endOfLife string, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error) {
+func (c *Client) CreateApplication(ctx context.Context, applicationName string, ardId int64, endOfLife string, monitor string, partOf string, workload string) (responses.CreateApplicationResponse, error) {
 	// TODO explore get solutions with ardId instead of other solution parameters
 	var result responses.CreateApplicationResponse
 
 	// create payload
 	reqPayload := payload[payloads.CreateApplicationPayload]{metadata{}, payloads.CreateApplicationPayload{}}
 	reqPayload.OperationPayload.ApplicationName = applicationName
-	reqPayload.OperationPayload.SolutionId = solutionId
+	reqPayload.OperationPayload.SolutionArdId = ardId
 	reqPayload.OperationPayload.EndOfLife = endOfLife
 	reqPayload.OperationPayload.Monitor = monitor 
 	reqPayload.OperationPayload.PartOf = partOf
@@ -46,16 +46,16 @@ func (c *Client) CreateApplication(ctx context.Context, applicationName string, 
 		return result, nil
 	}
 
-	return result, fmt.Errorf("failed to create application %+v: %w", err)
+	return result, fmt.Errorf("failed to create application: %s", err.Error())
 }
 
-func (c *Client) GetApplication(ctx context.Context, applicationName string, solutionName string) (responses.GetApplicationResponse, error) {
+func (c *Client) GetApplication(ctx context.Context, applicationName string, ardId int64) (responses.GetApplicationResponse, error) {
 	var result responses.GetApplicationResponse
 
 	// create payload
-	reqPayload := payload[payloads.GetDbPayload]{metadata{}, payloads.GetDbPayload{}}
+	reqPayload := payload[payloads.GetApplicationPayload]{metadata{}, payloads.GetApplicationPayload{}}
 	reqPayload.OperationPayload.ApplicationName = applicationName
-	reqPayload.OperationPayload.SolutionName = solutionName
+	reqPayload.OperationPayload.SolutionArdId = ardId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetApplicationActionPath)
@@ -82,14 +82,14 @@ func (c *Client) GetApplication(ctx context.Context, applicationName string, sol
 	return result, fmt.Errorf("application name from requested does not match")
 }
 
-func (c *Client) DeleteApplication(ctx context.Context, applicationName string, solutionName string) (bool, error) {
+func (c *Client) DeleteApplication(ctx context.Context, applicationName string, ardId int64) (bool, error) {
 	var result responses.DeleteApplicationResponse
 	// TODO: incorporate result in function return
 
 	// create payload
 	reqPayload := payload[payloads.DeleteApplicationPayload]{metadata{}, payloads.DeleteApplicationPayload{}}
 	reqPayload.OperationPayload.ApplicationName = applicationName
-	reqPayload.OperationPayload.SolutionId = solutionName
+	reqPayload.OperationPayload.SolutionArdId = ardId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.DeleteApplicationActionPath)

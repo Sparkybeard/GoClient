@@ -6,12 +6,12 @@ type CreateApplicationPayload struct {
 	Workload string `json:"workload"`
 	PartOf string `json:"partOf"`
 	Monitor	string `json:"monitor"`
-	SolutionId string `json:"solutionId"`
+	SolutionArdId int64 `json:"solutionArdId"`
 }
 
 type GetApplicationPayload struct {
 	ApplicationName string `json:"name"`
-	SolutionId string `json:"solutionId"`
+	SolutionArdId int64 `json:"solutionArdId"`
 }
 
 type UpdateApplicationPayload struct {
@@ -20,10 +20,10 @@ type UpdateApplicationPayload struct {
 	Workload string `json:"workload"`
 	PartOf string `json:"partOf"`
 	Monitor	string `json:"monitor"`
-	SolutionId string `json:"solutionId"`
+	SolutionArdId int64 `json:"solutionArdId"`
 }
 
 type DeleteApplicationPayload struct {
 	ApplicationName string `json:"name"`
-	SolutionId string `json:"solutionId"`
+	SolutionArdId int64 `json:"solutionArdId"`
 }

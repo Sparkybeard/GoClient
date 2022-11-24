@@ -41,7 +41,7 @@ func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName str
 		return result, nil
 	}
 
-	return result, fmt.Errorf("failed to create team %+v: %w", err)
+	return result, fmt.Errorf("failed to create team: %s", err.Error())
 	// TODO: add errors to add details to validation failure
 }
 
