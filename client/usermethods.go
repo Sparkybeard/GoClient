@@ -44,12 +44,13 @@ func (c *Client) CreateUser(ctx context.Context, userName string) (responses.Cre
 	// TODO: add errors to add details to validation failure
 }
 
-func (c *Client) GetUser(ctx context.Context, userName string) (responses.GetUserResponse, error) {
+func (c *Client) GetUser(ctx context.Context, userName string, userId string) (responses.GetUserResponse, error) {
 	var result responses.GetUserResponse
 
 	// create payload
 	reqPayload := payload[payloads.GetUserPayload]{metadata{}, payloads.GetUserPayload{}}
 	reqPayload.OperationPayload.UserName = userName
+	reqPayload.OperationPayload.UserId = userId
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetUserActionPath)

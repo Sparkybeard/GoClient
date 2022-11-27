@@ -6,10 +6,12 @@ type CreateUserPayload struct {
 
 type GetUserPayload struct {
 	UserName string `json:"name"`
+	UserId	 string	`json:"id"`
 }
 
 type UpdateUserPayload struct {
 	UserName string `json:"name"`
+	UserId	 string	`json:"id"`
 }
 
 type DeleteUserPayload struct {

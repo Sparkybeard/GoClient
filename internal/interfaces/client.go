@@ -27,7 +27,7 @@ type WMclient interface {
 	DeleteApplication(ctx context.Context, applicationName string, ardId int64) (bool, error)
 	UpdateApplication() (responses.UpdateApplicationResponse, error)
 
-	GetUser(ctx context.Context, userName string) (responses.GetUserResponse, error)
+	GetUser(ctx context.Context, userName string, userId string) (responses.GetUserResponse, error)
 	CreateUser(ctx context.Context, userName string) (responses.CreateUserResponse, error)
 	DeleteUser(ctx context.Context, userName string) (bool, error)
 	UpdateUser() (responses.UpdateUserResponse, error)
