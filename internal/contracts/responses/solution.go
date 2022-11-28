@@ -5,6 +5,7 @@ type CreateSolutionResponse struct {
 		Id string `json:"id"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId string `json:"solutionArdId"`
 	} `json:"data"`
 }
 
@@ -22,6 +23,7 @@ type UpdateSolutionResponse struct {
 		Id string `json:"id"`
 		SolutionId string `json:"solutionId"`
 		SolutionName string `json:"solutionName"`
+		SolutionArdId string `json:"solutionArdId"`
 	} `json:"data"`
 }
 
