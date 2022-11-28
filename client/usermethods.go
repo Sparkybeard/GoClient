@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	//helperfmt "wmclient/internal/helpers"
 	"github.com/Sparkybeard/GoClient/internal/consts"
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
 	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
+	"github.com/Sparkybeard/GoClient/internal/helpers"
 )
 
 func (c *Client) CreateUser(ctx context.Context, userName string) (responses.CreateUserResponse, error) {
@@ -50,7 +50,7 @@ func (c *Client) GetUser(ctx context.Context, userName string, userId string) (r
 	// create payload
 	reqPayload := payload[payloads.GetUserPayload]{metadata{}, payloads.GetUserPayload{}}
 	reqPayload.OperationPayload.UserName = userName
-	reqPayload.OperationPayload.UserId = userId
+	reqPayload.OperationPayload.UserId = helpers.FormatGuid(userId)
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetUserActionPath)
