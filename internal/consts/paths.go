@@ -4,7 +4,7 @@ const (
 	InstanciateDbActionPath = "/InstanciateDb"
 	GetDbActionPath         = "/GetDb"
 	DeleteDbActionPath      = "/DeleteDb"
-	UpdateDbActionPath = "/DeleteDb"
+	UpdateDbActionPath 		= "/DeleteDb"
 
 	CreateApplicationActionPath = "/CreateApplication"
 	GetApplicationActionPath = "/GetApplication"

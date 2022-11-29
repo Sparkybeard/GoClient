@@ -8,8 +8,8 @@ import (
 
 	//helperfmt "wmclient/internal/helpers"
 	"github.com/Sparkybeard/GoClient/internal/consts"
-	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 	"github.com/Sparkybeard/GoClient/internal/contracts/payloads"
+	"github.com/Sparkybeard/GoClient/internal/contracts/responses"
 )
 
 func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName string) (responses.CreateTeamResponse, error) {
@@ -17,8 +17,8 @@ func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName str
 
 	// create payload
 	reqPayload := payload[payloads.CreateTeamPayload]{metadata{}, payloads.CreateTeamPayload{}}
-	reqPayload.OperationPayload.TeamName = teamName 
-	reqPayload.OperationPayload.CostCenter = costCenter 
+	reqPayload.OperationPayload.TeamName = teamName
+	reqPayload.OperationPayload.CostCenter = costCenter
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.CreateTeamActionPath)
@@ -41,7 +41,7 @@ func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName str
 		return result, nil
 	}
 
-	return result, fmt.Errorf("failed to create team: %s", err.Error())
+	return result, fmt.Errorf("failed to create team: %s", err)
 	// TODO: add errors to add details to validation failure
 }
 
@@ -50,7 +50,7 @@ func (c *Client) GetTeam(ctx context.Context, teamName string) (responses.GetTea
 
 	// create payload
 	reqPayload := payload[payloads.GetTeamPayload]{metadata{}, payloads.GetTeamPayload{}}
-	reqPayload.OperationPayload.TeamName = teamName 
+	reqPayload.OperationPayload.TeamName = teamName
 
 	// execute request
 	resp, err := doAPIRequest(reqPayload, c, consts.GetTeamActionPath)
@@ -70,7 +70,7 @@ func (c *Client) GetTeam(ctx context.Context, teamName string) (responses.GetTea
 
 	// validate response
 	// if incorrect return empty string to instanciate
-	if (result.Data.TeamName == teamName && result.Data.CostCenter != "") {
+	if result.Data.TeamName == teamName && result.Data.CostCenter != "" {
 		return result, nil
 	}
 
