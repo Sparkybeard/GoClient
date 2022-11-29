@@ -41,7 +41,7 @@ func (c *Client) CreateTeam(ctx context.Context, costCenter string, teamName str
 		return result, nil
 	}
 
-	return result, fmt.Errorf("failed to create team: %s", err)
+	return result, fmt.Errorf("failed to create team: %s", teamName)
 	// TODO: add errors to add details to validation failure
 }
 
@@ -72,6 +72,10 @@ func (c *Client) GetTeam(ctx context.Context, teamName string) (responses.GetTea
 	// if incorrect return empty string to instanciate
 	if result.Data.TeamName == teamName && result.Data.CostCenter != "" {
 		return result, nil
+	}
+
+	if result.Data.TeamName == "" {
+		return result, fmt.Errorf("team with name, %s does not exist", teamName)
 	}
 
 	return result, fmt.Errorf("wrong data received from api")

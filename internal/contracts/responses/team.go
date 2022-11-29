@@ -4,7 +4,7 @@ type CreateTeamResponse struct {
 	Data struct {
 		Id         string `json:"id"`
 		TeamName   string `json:"name"`
-		CostCenter string `json:"costCenterName"`
+		CostCenter string `json:"costCenter"`
 	} `json:"data"`
 }
 
